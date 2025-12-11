@@ -20,10 +20,73 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 ## Experiment:
 
 
-## Program
-
-
+## Program:
+```
+Name:SADHANA R
+Register No:25017643
+Slot No:3P1-1
+```
+```
+import math 
+ 
+arr_time_input = '' 
+while not arr_time_input.strip(): # Loop until a non-empty input is received 
+    arr_time_input = input("Enter the mean inter arrival time of objects from feeder (in secs):") 
+    if not arr_time_input.strip(): 
+        print("Input cannot be empty. Please enter a value.") 
+ 
+arr_time = float(arr_time_input) 
+ 
+ser_time=float(input("Enter the mean inter service time of lathe machine (in secs):")) 
+Robot_time=float(input("Enter the Additional time taken for the robot (in secs):")) 
+c=int(input("Number of service centres:")) 
+lam=1/arr_time 
+mu=1/(ser_time+Robot_time) 
+print("------------------------------------------------") 
+print("Multiple Server with infinite capacity- (M/M/c):(00/FIFO)") 
+print("----------------------------------------------------") 
+print("The mean arrival rate per second: %0.2f" %lam) 
+print("The mean service rate per second: %0.2f"%mu) 
+rho=lam/(c*mu) 
+sum=(lam/mu)**c*(1/(1-rho))/math.factorial(c) 
+for i in range(0,c): 
+    sum=sum+(lam/mu)**i/math.factorial(i) 
+P0=1/sum 
+if(rho<1): 
+    Lq=(P0/math.factorial(c))*(1/c)*(lam/mu)**(c+1)/(1-rho)**2 
+    Ls=Lq+lam/mu 
+    Ws=Ls/lam 
+    Wq=Lq/lam 
+    print("Average number of objects in the system: %0.2f"%Ls) 
+    print("Average numner of objects in the conveyor: %0.2f"%Lq) 
+    print("Average waiting time of an object in the system: %0.2f secs"%Ws) 
+    print("Average waiting time of an object in the conveyor: %0.2f secs"%Ws) 
+    print("Probability that the system is busy: %0.2f" %(rho)) 
+    print("Probability that the system is empty:%0.2f "%(1-rho)) 
+else: 
+    print("Warning! Objects overflow will happen in the conveyor") 
+print("-----------------------------------------------------") 
+```
 ## Output :
-
+```
+Enter the mean inter arrival time of objects from feeder (in secs):17
+Enter the mean inter service time of lathe machine (in secs):2
+Enter the Additional time taken for the robot (in secs):9
+Number of service centres:3
+------------------------------------------------
+Multiple Server with infinite capacity- (M/M/c):(00/FIFO)
+----------------------------------------------------
+The mean arrival rate per second: 0.06
+The mean service rate per second: 0.09
+Average number of objects in the system: 0.66
+Average numner of objects in the conveyor: 0.01
+Average waiting time of an object in the system: 11.14 secs
+Average waiting time of an object in the conveyor: 11.14 secs
+Probability that the system is busy: 0.22
+Probability that the system is empty:0.78 
+-----------------------------------------------------
+```
 ## Result : 
+The average number of material in the system and in the conveyor and waiting are successfully found.  
+
 
