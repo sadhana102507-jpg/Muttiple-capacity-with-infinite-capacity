@@ -67,6 +67,7 @@ else:
     print("Warning! Objects overflow will happen in the conveyor") 
 print("-----------------------------------------------------") 
 ```
+https://colab.research.google.com/drive/1Qj6mf-YXBSY2Os4_fF2K2FIAJsTB_nhf?usp=sharing
 ## Output :
 ```
 Enter the mean inter arrival time of objects from feeder (in secs):17
